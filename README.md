@@ -1,24 +1,5 @@
 # med-form
 
-## Project setup
-```
-npm install
-```
+Форма для создания нового клиента. https://torontotokyo.github.io/medical-form/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Не завершена, находится в работе
