@@ -8,10 +8,7 @@
       @button-next="$emit('button-next')"
       v-show="buttonNextShow"
     ></button-next>
-    <button-finish
-      v-show="buttonFinishShow"
-      @finish="$emit('finish')"
-    ></button-finish>
+    <button-finish v-show="buttonFinishShow"></button-finish>
   </div>
 </template>
 

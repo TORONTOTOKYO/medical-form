@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form class="form">
+    <form class="form" @submit.prevent="onSubmit" novalidate>
       <div class="form__title">Форма регистрации клиента</div>
       <div class="steps">
         <item-tub
@@ -41,7 +41,6 @@
       <button-nav
         @button-next="buttonNext"
         @button-back="buttonBack"
-        @finish="buttonFinish"
         :step="step"
       ></button-nav>
     </form>
@@ -79,7 +78,7 @@ export default {
         gender: "",
         group: "",
         doctor: "",
-        sms: "",
+        sms: false,
         index: "",
         country: "",
         region: "",
@@ -139,12 +138,19 @@ export default {
     buttonBack() {
       this.step !== 1 ? this.step-- : null;
     },
-    buttonFinish() {
+    onSubmit(event) {
       alert("Новый клиент создан!");
-      for (let key in this.person) {
-        this.person[key] = "";
-      }
+      event.target.reset();
       this.step = 1;
+      event.target.reset();
+
+      for (let key in this.person) {
+        if (key === "sms") {
+          this.person[key] = false;
+        } else {
+          this.person[key] = "";
+        }
+      }
       this.$v.person.$reset();
     },
   },

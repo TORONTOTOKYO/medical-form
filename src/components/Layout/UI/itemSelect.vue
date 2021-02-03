@@ -53,23 +53,25 @@ export default {
 .select {
   position: relative;
   margin-bottom: 20px;
+
   &__label {
     display: block;
     margin-bottom: 10px;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 65%;
-    right: 10px;
-    z-index: 1;
-    pointer-events: none;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 43px;
+      right: 10px;
+      z-index: 1;
+      pointer-events: none;
 
-    border-style: solid;
-    border-width: 8px 7px 0 9px;
-    border-color: #121212 transparent transparent transparent;
+      border-style: solid;
+      border-width: 8px 7px 0 9px;
+      border-color: #121212 transparent transparent transparent;
+    }
   }
+
   &__item {
     width: 100%;
     padding: 10px;
@@ -81,6 +83,19 @@ export default {
     font-size: 16px;
 
     background: none;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      right: 10px;
+      z-index: 1;
+      pointer-events: none;
+
+      border-style: solid;
+      border-width: 8px 7px 0 9px;
+      border-color: #121212 transparent transparent transparent;
+    }
     &:focus {
       border-color: #000;
     }
