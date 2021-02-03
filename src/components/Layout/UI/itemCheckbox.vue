@@ -4,8 +4,6 @@
       type="checkbox"
       class="options__input"
       id="formSMS"
-      true-value="да"
-      false-value="нет"
       :value="value"
       @input="$emit('input', $event.target.checked)"
     />

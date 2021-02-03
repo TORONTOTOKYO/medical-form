@@ -1,13 +1,13 @@
 <template>
   <div class="form__item">
     <label :for="id" class="form__label"
-      >{{ labelTitle }} <span class="form__span">*</span></label
+      >{{ labelTitle }}
+      <span class="obligatory" v-if="important">*</span></label
     >
     <input
       :type="typeInput"
       class="form__input"
       :id="id"
-      tabindex="1"
       :value="value"
       @input="$emit('input', $event.target.value)"
     />
@@ -32,6 +32,9 @@ export default {
     typeInput: {
       type: String,
       require: true,
+    },
+    important: {
+      type: Boolean,
     },
     dirty: {
       type: Boolean,
@@ -69,7 +72,7 @@ export default {
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.21);
   }
 }
-.form__span {
+.obligatory {
   color: red;
 }
 .error {

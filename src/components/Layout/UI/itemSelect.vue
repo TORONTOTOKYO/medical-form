@@ -1,6 +1,8 @@
 <template>
   <div class="select">
-    <label :for="id" class="select__label">{{ labelTitle }}</label>
+    <label :for="id" class="select__label"
+      >{{ labelTitle }}<span class="obligatory">*</span></label
+    >
     <select
       :id="id"
       class="select__item"
@@ -38,6 +40,9 @@ export default {
     id: {
       type: String,
       required: true,
+    },
+    important: {
+      type: Boolean,
     },
     dirty: {
       type: Boolean,
@@ -106,6 +111,9 @@ export default {
   .error {
     margin: 5px 0px;
     font-size: 12px;
+    color: red;
+  }
+  .obligatory {
     color: red;
   }
 }

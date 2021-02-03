@@ -1,5 +1,5 @@
 <template>
-  <button class="btn blue" type="submit" @click="$emit('finish')">
+  <button class="btn blue" type="submit">
     Готово
   </button>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div class="select">
     <label :for="id" class="select__label"
-      >{{ labelTitle }} <span class="form__span">*</span></label
+      >{{ labelTitle }} <span class="obligatory">*</span></label
     >
     <select
       :id="id"
@@ -40,6 +40,9 @@ export default {
     list: {
       type: Array,
       required: true,
+    },
+    important: {
+      type: Boolean,
     },
     dirty: {
       type: Boolean,
@@ -80,6 +83,10 @@ export default {
   }
   .error {
     font-size: 12px;
+    color: red;
+  }
+
+  .obligatory {
     color: red;
   }
 }
