@@ -145,7 +145,7 @@ export default {
       event.target.reset();
 
       for (let key in this.person) {
-        if (key === "sms") {
+        if (key == "sms") {
           this.person[key] = false;
         } else {
           this.person[key] = "";
