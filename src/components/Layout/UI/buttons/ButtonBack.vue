@@ -1,26 +1,22 @@
 <template>
-  <button class="btn red" type="button" @click="$emit('button-back')">
+  <button class="btn-back" type="button" @click="$emit('button-back')">
     Назад
   </button>
 </template>
 
 <style lang="scss" scoped>
-.btn {
-  color: #42b983;
-
-  border-radius: 99px;
-  letter-spacing: 0.05em;
-  border: 1px solid #42b983;
-
+.btn-back {
   margin-right: 10px;
   padding: 10px 30px;
+  border: 1px solid #e72525;
+  border-radius: 99px;
 
+  color: #fff;
   white-space: nowrap;
-  text-decoration: none;
   text-transform: uppercase;
   outline: none;
 
-  background: #fff;
+  background: #e72525;
 
   transition: all 0.22s;
   &:hover {
@@ -37,11 +33,5 @@
   &:active {
     box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.8);
   }
-}
-
-.red {
-  background: #e72525;
-  color: #fff;
-  border-color: #e72525;
 }
 </style>

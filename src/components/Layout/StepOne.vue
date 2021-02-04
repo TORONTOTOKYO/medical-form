@@ -8,7 +8,6 @@
       :typeInput="'text'"
       :dirty="validate.surname.$dirty"
       :required="validate.surname.required"
-      :important="true"
     ></item-input>
 
     <item-input

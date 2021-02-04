@@ -216,6 +216,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  width: 100%;
+  height: 100vh;
+  max-width: 992px;
+  padding: 0px 10px;
+  margin: 0 auto;
+}
+
 .form {
   width: 100%;
   min-height: 1020px;
