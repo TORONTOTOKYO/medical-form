@@ -255,7 +255,7 @@ export default {
 
   background: #fff;
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+  overflow-x: scroll;
   &__title {
     font-size: 30px;
     font-weight: 700;
@@ -268,6 +268,20 @@ export default {
 
 .steps {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   margin-bottom: 30px;
+}
+
+@media (max-width: 800px) {
+  .steps {
+    &__step {
+      width: 100%;
+      margin-bottom: 20px;
+      &:not(:last-child) {
+        margin-right: 0px;
+      }
+    }
+  }
 }
 </style>

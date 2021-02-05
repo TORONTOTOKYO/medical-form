@@ -2,16 +2,15 @@
   <div class="show-result">
     <div class="show-result__title">Проверьте данные пациента:</div>
     <div class="show-result__inner">
-      <ul class="info">
-        <li class="info__item" v-for="(item, index) in namesFiled" :key="index">
-          {{ item }}
-        </li>
-      </ul>
-      <ul class="date">
-        <li class="date__item" v-for="(item, index) in person" :key="index">
-          {{ firstWordUpperCase(item) }}
-        </li>
-      </ul>
+      <table class="table table-scroll">
+        <thead></thead>
+        <tbody>
+          <tr v-for="(value, name, index) in person" :key="index">
+            <td>{{ namesFiled[index] }}</td>
+            <td>{{ firstWordUpperCase(value) }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
@@ -56,12 +55,12 @@ export default {
   flex-grow: 1;
   &__title {
     margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
   }
   &__inner {
     display: flex;
-  }
-  .info {
-    font-weight: 700;
+    justify-content: center;
   }
 }
 </style>
