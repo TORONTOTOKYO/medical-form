@@ -70,7 +70,7 @@ export default {
       content: "";
       position: absolute;
       display: block;
-      top: 43px;
+      top: 40px;
       right: 10px;
       z-index: 1;
       pointer-events: none;

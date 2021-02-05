@@ -7,7 +7,7 @@
         <tbody>
           <tr v-for="(value, name, index) in person" :key="index">
             <td>{{ namesFiled[index] }}</td>
-            <td>{{ firstWordUpperCase(value) }}</td>
+            <td>{{ toLowerCase(value) }}</td>
           </tr>
         </tbody>
       </table>
@@ -31,20 +31,16 @@ export default {
     },
   },
   methods: {
-    firstWordUpperCase(str) {
-      let word;
-      if (typeof str === "boolean") {
-        word = str ? "Да" : "Нет";
-      } else {
-        let checkWord = str.split(" ")[0];
-        if (checkWord === checkWord.toUpperCase()) {
-          word = str;
-        } else {
-          word = str[0].toUpperCase() + str.substr(1).toLowerCase();
-        }
-      }
-
-      return word;
+    toLowerCase(str) {
+      let string;
+      typeof str === "string"
+        ? (string = str.toLowerCase())
+        : typeof str === "boolean"
+        ? str === false
+          ? (string = "-")
+          : (string = "ДА")
+        : null;
+      return string;
     },
   },
 };
