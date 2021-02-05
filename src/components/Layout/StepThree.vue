@@ -8,14 +8,14 @@
       :list="document"
       :dirty="validate.document.$dirty"
       :required="validate.document.required"
+      :necessarily="true"
     ></item-select>
     <item-input
       value="person.series"
       v-model="person.series"
       :label-title="'Серия документа'"
       :id="'formSeries'"
-      :dirty="validate.series.$dirty"
-      :required="validate.series.required"
+      :necessarily="false"
     ></item-input>
     <item-input
       value="person.number"
@@ -24,6 +24,7 @@
       :id="'formNumber'"
       :dirty="validate.number.$dirty"
       :required="validate.number.required"
+      :necessarily="true"
     ></item-input>
     <item-input
       value="person.issued"
@@ -32,6 +33,7 @@
       :id="'formIssued'"
       :dirty="validate.issued.$dirty"
       :required="validate.issued.required"
+      :necessarily="true"
     ></item-input>
     <item-input
       value="person.dateIssued"
@@ -41,6 +43,7 @@
       :type="'number'"
       :dirty="validate.dateIssued.$dirty"
       :required="validate.dateIssued.required"
+      :necessarily="true"
     ></item-input>
   </div>
 </template>

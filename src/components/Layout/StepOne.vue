@@ -8,6 +8,7 @@
       :typeInput="'text'"
       :dirty="validate.surname.$dirty"
       :required="validate.surname.required"
+      :necessarily="true"
     ></item-input>
 
     <item-input
@@ -18,6 +19,7 @@
       :typeInput="'text'"
       :dirty="validate.name.$dirty"
       :required="validate.name.required"
+      :necessarily="true"
     ></item-input>
     <item-input
       v-model.trim="person.patronymic"
@@ -27,11 +29,13 @@
       :typeInput="'text'"
       :dirty="validate.patronymic.$dirty"
       :required="validate.patronymic.required"
+      :necessarily="true"
     ></item-input>
 
     <item-datapicker
       v-model="person.dateOfBirth"
       :value="person.dateOfBirth"
+      :necessarily="true"
     ></item-datapicker>
     <item-input
       v-model.trim="person.phone"
@@ -41,6 +45,7 @@
       :typeInput="'number'"
       :dirty="validate.phone.$dirty"
       :required="validate.phone.required"
+      :necessarily="true"
     ></item-input>
     <item-select
       v-model="person.gender"
@@ -50,6 +55,7 @@
       :list="gender"
       :dirty="validate.gender.$dirty"
       :required="validate.gender.required"
+      :necessarily="true"
     ></item-select>
     <item-multi-select
       v-model="person.group"
@@ -59,6 +65,7 @@
       :list="clients"
       :dirty="validate.group.$dirty"
       :required="validate.group.required"
+      :necessarily="true"
     ></item-multi-select>
     <item-select
       v-model="person.doctor"
@@ -68,6 +75,7 @@
       :list="doctor"
       :dirty="validate.doctor.$dirty"
       :required="validate.doctor.required"
+      :necessarily="true"
     ></item-select>
     <item-checkbox
       v-model="person.sms"

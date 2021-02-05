@@ -1,14 +1,14 @@
 <template>
   <div class="form__item">
     <label for="formDateOfBirth" class="form__label"
-      >Дата рождения <span class="form__span">*</span></label
+      >Дата рождения
+      <span class="necessarily" v-if="necessarily">*</span></label
     >
     <input
       type="date"
       class="form__input"
       id="formDateOfBirth"
       :value="value"
-      tabindex="4"
       @input="$emit('input', $event.target.value)"
     />
   </div>
@@ -19,6 +19,9 @@ export default {
   props: {
     value: {
       type: String,
+    },
+    necessarily: {
+      type: Boolean,
     },
   },
 };
@@ -50,7 +53,7 @@ export default {
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.21);
   }
 }
-.form__span {
+.necessarily {
   color: red;
 }
 </style>

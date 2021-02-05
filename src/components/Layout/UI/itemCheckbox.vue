@@ -15,7 +15,7 @@
 export default {
   props: {
     value: {
-      type: Boolean,
+      type: [Boolean, String],
     },
     id: {
       type: String,
@@ -57,7 +57,7 @@ export default {
     &::after {
       content: "";
       position: absolute;
-      top: 6px;
+      top: 4px;
       left: 4px;
       width: 10px;
       height: 10px;

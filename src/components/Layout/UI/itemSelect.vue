@@ -1,7 +1,8 @@
 <template>
   <div class="select">
     <label :for="id" class="select__label"
-      >{{ labelTitle }}<span class="obligatory">*</span></label
+      >{{ labelTitle }}
+      <span class="necessarily" v-if="necessarily">*</span></label
     >
     <select
       :id="id"
@@ -26,6 +27,9 @@
 <script>
 export default {
   props: {
+    necessarily: {
+      type: Boolean,
+    },
     value: {
       type: String,
     },
@@ -113,7 +117,7 @@ export default {
     font-size: 12px;
     color: red;
   }
-  .obligatory {
+  .necessarily {
     color: red;
   }
 }

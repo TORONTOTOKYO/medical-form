@@ -2,7 +2,7 @@
   <div class="form__item">
     <label :for="id" class="form__label"
       >{{ labelTitle }}
-      <span class="obligatory" v-if="important">*</span></label
+      <span class="necessarily" v-if="necessarily">*</span></label
     >
     <input
       :type="typeInput"
@@ -20,6 +20,9 @@
 <script>
 export default {
   props: {
+    necessarily: {
+      type: Boolean,
+    },
     value: {
       type: String,
     },
@@ -38,8 +41,13 @@ export default {
     },
     dirty: {
       type: Boolean,
+      required: false,
     },
     required: {
+      type: Boolean,
+      required: false,
+    },
+    numeric: {
       type: Boolean,
     },
   },
@@ -72,7 +80,7 @@ export default {
     box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.21);
   }
 }
-.obligatory {
+.necessarily {
   color: red;
 }
 .error {

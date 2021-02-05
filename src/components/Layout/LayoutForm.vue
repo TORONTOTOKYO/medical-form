@@ -35,7 +35,7 @@
       ></step-three>
       <show-result
         v-show="step === 4"
-        :person="person"
+        :person="showResults"
         :names-filed="namesField"
       ></show-result>
       <button-nav
@@ -44,6 +44,7 @@
         :step="step"
       ></button-nav>
     </form>
+    <popup @close-popup="closePopup" v-if="popup"></popup>
   </div>
 </template>
 
@@ -55,6 +56,7 @@ import StepOne from "@/components/Layout/StepOne";
 import StepSecond from "@/components/Layout/StepSecond";
 import StepThree from "@/components/Layout/StepThree";
 import ShowResult from "@/components/Layout/ShowResult";
+import Popup from "@/components/Layout/Popup";
 
 import ButtonNav from "@/components/Layout/UI/buttons/ButtonNav";
 
@@ -66,6 +68,7 @@ export default {
     StepThree,
     ShowResult,
     ButtonNav,
+    Popup,
   },
   data() {
     return {
@@ -78,7 +81,7 @@ export default {
         gender: "",
         group: "",
         doctor: "",
-        sms: false,
+        sms: "",
         index: "",
         country: "",
         region: "",
@@ -91,6 +94,7 @@ export default {
         issued: "",
         dateIssued: "",
       },
+      popup: false,
       step: 1,
       chekedResult: false,
       tabs: ["Основная информация", "Адрес", "Документ", "Проверка данных"],
@@ -115,8 +119,8 @@ export default {
         "Улица:",
         "Дом:",
         "Документ:",
-        "Серия паспорта:",
-        "Номер паспорта:",
+        "Серия:",
+        "Номер:",
         "Кем выдан:",
         "Когда выдан",
       ],
@@ -139,19 +143,33 @@ export default {
       this.step !== 1 ? this.step-- : null;
     },
     onSubmit(event) {
-      alert("Новый клиент создан!");
+      this.popup = true;
       event.target.reset();
+      this.$v.person.$reset();
       this.step = 1;
-      event.target.reset();
 
       for (let key in this.person) {
-        if (key == "sms") {
-          this.person[key] = false;
-        } else {
-          this.person[key] = "";
-        }
+        this.person[key] = "";
       }
-      this.$v.person.$reset();
+    },
+    closePopup() {
+      this.popup = false;
+    },
+    searchEmptyString(obj, searchString, installingString) {
+      for (let key in obj) {
+        obj[key] === searchString ? (obj[key] = installingString) : null;
+      }
+    },
+  },
+  computed: {
+    showResults() {
+      let obj = this.person;
+      if (this.step === 4) {
+        this.searchEmptyString(obj, "", "-");
+      } else if (this.step < 4) {
+        this.searchEmptyString(obj, "-", "");
+      }
+      return obj;
     },
   },
   validations: {
@@ -177,15 +195,7 @@ export default {
       doctor: {
         required,
       },
-      index: {
-        required,
-      },
-      country: {
-        required,
-      },
-      region: {
-        required,
-      },
+
       city: {
         required,
       },
@@ -198,9 +208,7 @@ export default {
       document: {
         required,
       },
-      series: {
-        required,
-      },
+      series: {},
       number: {
         required,
       },
@@ -226,8 +234,7 @@ export default {
 
 .form {
   width: 100%;
-  min-height: 1020px;
-
+  min-height: 1050px;
   display: flex;
   flex-direction: column;
   padding: 16px;

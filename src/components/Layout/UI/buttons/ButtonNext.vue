@@ -15,7 +15,6 @@
   padding: 10px 30px;
 
   white-space: nowrap;
-  text-decoration: none;
   text-transform: uppercase;
   outline: none;
 

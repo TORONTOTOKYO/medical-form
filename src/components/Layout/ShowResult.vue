@@ -9,7 +9,7 @@
       </ul>
       <ul class="date">
         <li class="date__item" v-for="(item, index) in person" :key="index">
-          {{ item }}
+          {{ firstWordUpperCase(item) }}
         </li>
       </ul>
     </div>
@@ -26,6 +26,26 @@ export default {
     namesFiled: {
       type: Array,
       required: true,
+    },
+    step: {
+      type: Number,
+    },
+  },
+  methods: {
+    firstWordUpperCase(str) {
+      let word;
+      if (typeof str === "boolean") {
+        word = str ? "Да" : "Нет";
+      } else {
+        let checkWord = str.split(" ")[0];
+        if (checkWord === checkWord.toUpperCase()) {
+          word = str;
+        } else {
+          word = str[0].toUpperCase() + str.substr(1).toLowerCase();
+        }
+      }
+
+      return word;
     },
   },
 };

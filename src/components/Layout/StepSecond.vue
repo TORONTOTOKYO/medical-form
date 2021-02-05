@@ -6,8 +6,7 @@
       :label-title="'Индекс'"
       :id="'formIndex'"
       :typeInput="'number'"
-      :dirty="validate.index.$dirty"
-      :required="validate.index.required"
+      :necessarily="false"
     ></item-input>
     <item-input
       v-model="person.country"
@@ -15,8 +14,7 @@
       :label-title="'Страна'"
       :id="'formCountry'"
       :typeInput="'text'"
-      :dirty="validate.country.$dirty"
-      :required="validate.country.required"
+      :necessarily="false"
     ></item-input>
     <item-input
       v-model="person.region"
@@ -24,8 +22,7 @@
       :label-title="'Регион'"
       :id="'formRegion'"
       :typeInput="'text'"
-      :dirty="validate.region.$dirty"
-      :required="validate.region.required"
+      :necessarily="false"
     ></item-input>
     <item-input
       v-model="person.city"
@@ -35,6 +32,7 @@
       :typeInput="'text'"
       :dirty="validate.city.$dirty"
       :required="validate.city.required"
+      :necessarily="true"
     ></item-input>
     <item-input
       v-model="person.street"
@@ -44,6 +42,7 @@
       :typeInput="'text'"
       :dirty="validate.street.$dirty"
       :required="validate.street.required"
+      :necessarily="true"
     ></item-input>
     <item-input
       v-model="person.house"
@@ -53,6 +52,7 @@
       :typeInput="'number'"
       :dirty="validate.house.$dirty"
       :required="validate.house.required"
+      :necessarily="true"
     ></item-input>
   </div>
 </template>
