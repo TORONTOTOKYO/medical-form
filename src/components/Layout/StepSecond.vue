@@ -1,7 +1,7 @@
 <template>
   <div class="form__step">
     <item-input
-      v-model="person.index"
+      v-model.trim="person.index"
       :value="person.index"
       :label-title="'Индекс'"
       :id="'formIndex'"
@@ -9,7 +9,7 @@
       :necessarily="false"
     ></item-input>
     <item-input
-      v-model="person.country"
+      v-model.trim="person.country"
       :value="person.country"
       :label-title="'Страна'"
       :id="'formCountry'"
@@ -17,7 +17,7 @@
       :necessarily="false"
     ></item-input>
     <item-input
-      v-model="person.region"
+      v-model.trim="person.region"
       :value="person.region"
       :label-title="'Регион'"
       :id="'formRegion'"
@@ -25,7 +25,7 @@
       :necessarily="false"
     ></item-input>
     <item-input
-      v-model="person.city"
+      v-model.trim="person.city"
       :value="person.city"
       :label-title="'Город'"
       :id="'formCity'"
@@ -35,7 +35,7 @@
       :necessarily="true"
     ></item-input>
     <item-input
-      v-model="person.street"
+      v-model.trim="person.street"
       :value="person.street"
       :label-title="'Улица'"
       :id="'formStreet'"
@@ -45,7 +45,7 @@
       :necessarily="true"
     ></item-input>
     <item-input
-      v-model="person.house"
+      v-model.trim="person.house"
       :value="person.house"
       :label-title="'Номер дома'"
       :id="'formHouse'"

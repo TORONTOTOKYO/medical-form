@@ -1,7 +1,7 @@
 <template>
   <div class="form__step">
     <item-select
-      v-model="person.document"
+      v-model.trim="person.document"
       :value="person.document"
       :label-title="'Выберите тип документа'"
       :id="'formDocument'"
@@ -12,14 +12,14 @@
     ></item-select>
     <item-input
       value="person.series"
-      v-model="person.series"
+      v-model.trim="person.series"
       :label-title="'Серия документа'"
       :id="'formSeries'"
       :necessarily="false"
     ></item-input>
     <item-input
       value="person.number"
-      v-model="person.number"
+      v-model.trim="person.number"
       :label-title="'Номер документа'"
       :id="'formNumber'"
       :dirty="validate.number.$dirty"
@@ -28,7 +28,7 @@
     ></item-input>
     <item-input
       value="person.issued"
-      v-model="person.issued"
+      v-model.trim="person.issued"
       :label-title="'Кем выдан'"
       :id="'formIssued'"
       :dirty="validate.issued.$dirty"
@@ -37,7 +37,7 @@
     ></item-input>
     <item-input
       value="person.dateIssued"
-      v-model="person.dateIssued"
+      v-model.trim="person.dateIssued"
       :label-title="'Когда выдан'"
       :id="'formDataIssued'"
       :type="'number'"
