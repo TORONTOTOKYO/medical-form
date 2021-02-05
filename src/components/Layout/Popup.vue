@@ -2,7 +2,7 @@
   <div class="popup">
     <div class="popup__inner">
       <div class="popup__text">
-        Новый клиент успешно создан!
+        <slot></slot>
       </div>
       <button class="popup__btn" @click="$emit('close-popup')">Закрыть</button>
     </div>

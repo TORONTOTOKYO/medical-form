@@ -44,7 +44,9 @@
         :step="step"
       ></button-nav>
     </form>
-    <popup @close-popup="closePopup" v-if="popup"></popup>
+    <popup @close-popup="closePopup" v-if="popup.sucsess || popup.failed">{{
+      textPopup
+    }}</popup>
   </div>
 </template>
 
@@ -94,7 +96,10 @@ export default {
         issued: "",
         dateIssued: "",
       },
-      popup: false,
+      popup: {
+        sucsess: false,
+        failed: false,
+      },
       step: 1,
       chekedResult: false,
       tabs: ["Основная информация", "Адрес", "Документ", "Проверка данных"],
@@ -134,7 +139,7 @@ export default {
       if (this.step === 4) {
         this.$v.person.$touch();
         if (this.$v.person.$error) {
-          alert("Есть ошибки!");
+          this.popup.failed = true;
           this.step = 1;
         }
       }
@@ -143,7 +148,7 @@ export default {
       this.step !== 1 ? this.step-- : null;
     },
     onSubmit(event) {
-      this.popup = true;
+      this.popup.sucsess = true;
       event.target.reset();
       this.$v.person.$reset();
       this.step = 1;
@@ -153,7 +158,7 @@ export default {
       }
     },
     closePopup() {
-      this.popup = false;
+      this.popup.sucsess = this.popup.failed = false;
     },
     searchEmptyString(obj, searchString, installingString) {
       for (let key in obj) {
@@ -170,6 +175,11 @@ export default {
         this.searchEmptyString(obj, "-", "");
       }
       return obj;
+    },
+    textPopup() {
+      return this.popup.failed
+        ? "Заполните все необходимые поля"
+        : "Клиент создан";
     },
   },
   validations: {
@@ -234,7 +244,7 @@ export default {
 
 .form {
   width: 100%;
-  min-height: 1050px;
+  min-height: 950px;
   display: flex;
   flex-direction: column;
   padding: 16px;
