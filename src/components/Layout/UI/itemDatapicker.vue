@@ -34,6 +34,7 @@ export default {
 .form__label {
   display: block;
   margin-bottom: 10px;
+  font-size: 16px;
 }
 .form__input {
   width: 80%;
@@ -41,16 +42,13 @@ export default {
   width: 100%;
   padding: 8px 24px;
   border: 1px solid #e5e5e5;
-  border-radius: 3px;
 
   font-size: 16px;
   font-weight: 400;
   color: #2c3e50;
 
-  box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.11);
   &:focus {
     border-color: #2c3e50;
-    box-shadow: 1px 2px 1px 0px rgba(0, 0, 0, 0.21);
   }
 }
 .necessarily {

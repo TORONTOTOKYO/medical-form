@@ -66,6 +66,7 @@ export default {
   &__label {
     display: block;
     margin-bottom: 10px;
+    font-size: 16px;
     &::after {
       content: "";
       position: absolute;

@@ -4,12 +4,11 @@
       <div class="form__title">Форма регистрации клиента</div>
       <div class="steps">
         <item-tub
-          v-for="(tab, index) in tabs"
+          v-for="(tab, index) in 4"
           :key="index"
           :index="index + 1"
           :step="step"
-          >{{ tab }}</item-tub
-        >
+        ></item-tub>
       </div>
       <step-one
         v-show="step === 1"
@@ -38,11 +37,21 @@
         :person="showResults"
         :names-filed="namesField"
       ></show-result>
-      <button-nav
-        @button-next="buttonNext"
-        @button-back="buttonBack"
-        :step="step"
-      ></button-nav>
+      <div class="buttons">
+        <v-button
+          :disabled="buttonDisabled"
+          @button-click="buttonBack"
+          :typeButton="'button'"
+          >Назад</v-button
+        >
+        <v-button
+          @button-click="buttonNext"
+          v-show="buttonNextShow"
+          :typeButton="'button'"
+          >Далее</v-button
+        >
+        <v-button v-show="step === 4" :typeButton="'submit'">Готово</v-button>
+      </div>
     </form>
     <popup @close-popup="closePopup" v-if="popup.sucsess || popup.failed">{{
       textPopup
@@ -53,6 +62,7 @@
 <script>
 import { required } from "vuelidate/lib/validators";
 import itemTub from "@/components/Layout/UI/itemTub";
+import VButton from "@/components/Layout/UI/VButton";
 
 import StepOne from "@/components/Layout/StepOne";
 import StepSecond from "@/components/Layout/StepSecond";
@@ -60,16 +70,14 @@ import StepThree from "@/components/Layout/StepThree";
 import ShowResult from "@/components/Layout/ShowResult";
 import Popup from "@/components/Layout/Popup";
 
-import ButtonNav from "@/components/Layout/UI/buttons/ButtonNav";
-
 export default {
   components: {
     itemTub,
+    VButton,
     StepOne,
     StepSecond,
     StepThree,
     ShowResult,
-    ButtonNav,
     Popup,
   },
   data() {
@@ -101,8 +109,6 @@ export default {
         failed: false,
       },
       step: 1,
-      chekedResult: false,
-      tabs: ["Основная информация", "Адрес", "Документ", "Проверка данных"],
       gender: ["Мужской", "Женский"],
       doctor: ["Иванов", "Захаров", "Чернышёва"],
       clients: ["VIP", "Проблемные", "ОМС"],
@@ -167,6 +173,12 @@ export default {
     },
   },
   computed: {
+    buttonDisabled() {
+      return this.step === 1 ? true : false;
+    },
+    buttonNextShow() {
+      return this.step < 4;
+    },
     showResults() {
       let obj = this.person;
       if (this.step === 4) {
@@ -244,18 +256,19 @@ export default {
 
 .form {
   width: 100%;
-  min-height: 950px;
+  min-height: 1050px;
   display: flex;
   flex-direction: column;
   padding: 16px;
   margin-top: 16px;
+  margin-bottom: 20px;
   border-radius: 10px;
 
   color: #000;
 
   background: #fff;
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
-  overflow-x: scroll;
+  overflow: hidden;
   &__title {
     font-size: 30px;
     font-weight: 700;
@@ -266,22 +279,14 @@ export default {
   }
 }
 
-.steps {
+.buttons {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 30px;
+  justify-content: space-between;
 }
 
-@media (max-width: 800px) {
-  .steps {
-    &__step {
-      width: 100%;
-      margin-bottom: 20px;
-      &:not(:last-child) {
-        margin-right: 0px;
-      }
-    }
-  }
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 </style>

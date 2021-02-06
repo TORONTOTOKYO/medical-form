@@ -65,6 +65,7 @@ export default {
   &__label {
     display: block;
     margin-bottom: 10px;
+    font-size: 16px;
   }
 
   &__item {
@@ -72,7 +73,7 @@ export default {
     padding: 10px;
 
     border: 1px solid #ccc;
-    border-radius: 3px;
+
     appearance: none;
     font-family: inherit;
     font-size: 16px;

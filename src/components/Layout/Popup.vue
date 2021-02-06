@@ -43,15 +43,16 @@ export default {};
     color: #000;
   }
   &__btn {
-    border: 1px solid #32586d;
-    color: #32586d;
+    margin-right: 10px;
+    padding: 20px 40px;
 
-    border-radius: 10px;
-    background: #fff;
-    padding: 10px 20px;
-    outline: none;
+    color: #fff;
+    white-space: nowrap;
     text-transform: uppercase;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.397);
+    outline: none;
+
+    background: #0b48ff;
+
     transition: all 0.22s;
     &:hover {
       cursor: pointer;

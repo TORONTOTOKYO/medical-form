@@ -1,7 +1,5 @@
 <template>
-  <div class="steps__step" :class="classObject">
-    <slot></slot>
-  </div>
+  <div class="steps__step" :class="classObject"></div>
 </template>
 
 <script>
@@ -29,15 +27,12 @@ export default {
 
 <style lang="scss" scoped>
 .steps__step {
+  width: 50px;
+  margin-right: 10px;
   padding: 10px 30px;
-  border: 1px solid #2869b9;
-  border-radius: 100px;
-  color: #2869b9;
+  border-bottom: 1px solid #000;
 
   cursor: default;
-  &:not(:last-child) {
-    margin-right: 30px;
-  }
 }
 
 .active {
