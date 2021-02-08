@@ -17,6 +17,7 @@
 
 <script>
 export default {
+  name: "ShowResult",
   props: {
     person: {
       type: Object,
@@ -25,9 +26,6 @@ export default {
     namesFiled: {
       type: Array,
       required: true,
-    },
-    step: {
-      type: Number,
     },
   },
   methods: {
@@ -38,7 +36,7 @@ export default {
         : typeof str === "boolean"
         ? str === false
           ? (string = "-")
-          : (string = "ДА")
+          : (string = "НЕТ")
         : null;
       return string;
     },

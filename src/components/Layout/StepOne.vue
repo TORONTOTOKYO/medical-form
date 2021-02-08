@@ -1,6 +1,6 @@
 <template>
   <div class="form__step">
-    <item-input
+    <v-input
       v-model.trim="person.surname"
       :value="person.surname"
       :label-title="'Фамилия'"
@@ -9,9 +9,9 @@
       :dirty="validate.surname.$dirty"
       :required="validate.surname.required"
       :necessarily="true"
-    ></item-input>
+    ></v-input>
 
-    <item-input
+    <v-input
       v-model.trim="person.name"
       :value="person.name"
       :label-title="'Имя'"
@@ -20,8 +20,8 @@
       :dirty="validate.name.$dirty"
       :required="validate.name.required"
       :necessarily="true"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       v-model.trim="person.patronymic"
       :value="person.patronymic"
       :label-title="'Отчество'"
@@ -30,14 +30,16 @@
       :dirty="validate.patronymic.$dirty"
       :required="validate.patronymic.required"
       :necessarily="true"
-    ></item-input>
+    ></v-input>
 
-    <item-datapicker
+    <v-datapicker
       v-model="person.dateOfBirth"
       :value="person.dateOfBirth"
+      :dirty="validate.patronymic.$dirty"
+      :required="validate.patronymic.required"
       :necessarily="true"
-    ></item-datapicker>
-    <item-input
+    ></v-datapicker>
+    <v-input
       v-model.trim="person.phone"
       :value="person.phone"
       :label-title="'Номер телефона'"
@@ -46,8 +48,8 @@
       :dirty="validate.phone.$dirty"
       :required="validate.phone.required"
       :necessarily="true"
-    ></item-input>
-    <item-select
+    ></v-input>
+    <v-select
       v-model="person.gender"
       :value="person.gender"
       :label-title="'Выберите пол'"
@@ -56,8 +58,8 @@
       :dirty="validate.gender.$dirty"
       :required="validate.gender.required"
       :necessarily="true"
-    ></item-select>
-    <item-multi-select
+    ></v-select>
+    <v-multi-select
       v-model="person.group"
       :value="person.group"
       :label-title="'Группа клиентов'"
@@ -66,8 +68,8 @@
       :dirty="validate.group.$dirty"
       :required="validate.group.required"
       :necessarily="true"
-    ></item-multi-select>
-    <item-select
+    ></v-multi-select>
+    <v-select
       v-model="person.doctor"
       :value="person.doctor"
       :label-title="'Выберите врача'"
@@ -76,30 +78,31 @@
       :dirty="validate.doctor.$dirty"
       :required="validate.doctor.required"
       :necessarily="true"
-    ></item-select>
-    <item-checkbox
+    ></v-select>
+    <v-checkbox
       v-model="person.sms"
       :value="person.sms"
       :labelTitle="'Не отправлять SMS'"
       :id="'formSms'"
-    ></item-checkbox>
+    ></v-checkbox>
   </div>
 </template>
 
 <script>
-import itemInput from "@/components/Layout/UI/itemInput";
-import itemDatapicker from "@/components/Layout/UI/itemDatapicker";
-import itemSelect from "@/components/Layout/UI/itemSelect";
-import itemMultiSelect from "@/components/Layout/UI/itemMultiSelect";
-import itemCheckbox from "@/components/Layout/UI/itemCheckbox";
+import VInput from "@/components/Layout/UI/VInput";
+import VDatapicker from "@/components/Layout/UI/VDatapicker";
+import VSelect from "@/components/Layout/UI/VSelect";
+import VMultiSelect from "@/components/Layout/UI/VMultiSelect";
+import VCheckbox from "@/components/Layout/UI/VCheckbox";
 
 export default {
+  name: "StepOne",
   components: {
-    itemInput,
-    itemDatapicker,
-    itemSelect,
-    itemMultiSelect,
-    itemCheckbox,
+    VInput,
+    VDatapicker,
+    VSelect,
+    VMultiSelect,
+    VCheckbox,
   },
   props: {
     step: {
@@ -124,6 +127,7 @@ export default {
     },
     validate: {
       type: Object,
+      required: true,
     },
   },
 };

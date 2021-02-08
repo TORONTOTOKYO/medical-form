@@ -19,26 +19,29 @@
 
 <script>
 export default {
+  name: "itemInput",
   props: {
     necessarily: {
       type: Boolean,
+      default: false,
     },
     value: {
       type: String,
+      required: true,
     },
     labelTitle: {
       type: String,
+      required: true,
     },
     id: {
       type: String,
+      required: true,
     },
     typeInput: {
       type: String,
       require: true,
     },
-    important: {
-      type: Boolean,
-    },
+
     dirty: {
       type: Boolean,
       required: false,

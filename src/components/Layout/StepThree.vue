@@ -1,6 +1,6 @@
 <template>
   <div class="form__step">
-    <item-select
+    <v-select
       v-model.trim="person.document"
       :value="person.document"
       :label-title="'Выберите тип документа'"
@@ -9,15 +9,15 @@
       :dirty="validate.document.$dirty"
       :required="validate.document.required"
       :necessarily="true"
-    ></item-select>
-    <item-input
+    ></v-select>
+    <v-input
       value="person.series"
       v-model.trim="person.series"
       :label-title="'Серия документа'"
       :id="'formSeries'"
       :necessarily="false"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       value="person.number"
       v-model.trim="person.number"
       :label-title="'Номер документа'"
@@ -25,8 +25,8 @@
       :dirty="validate.number.$dirty"
       :required="validate.number.required"
       :necessarily="true"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       value="person.issued"
       v-model.trim="person.issued"
       :label-title="'Кем выдан'"
@@ -34,8 +34,8 @@
       :dirty="validate.issued.$dirty"
       :required="validate.issued.required"
       :necessarily="true"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       value="person.dateIssued"
       v-model.trim="person.dateIssued"
       :label-title="'Когда выдан'"
@@ -44,21 +44,23 @@
       :dirty="validate.dateIssued.$dirty"
       :required="validate.dateIssued.required"
       :necessarily="true"
-    ></item-input>
+    ></v-input>
   </div>
 </template>
 
 <script>
-import itemInput from "@/components/Layout/UI/itemInput";
-import itemSelect from "@/components/Layout/UI/itemSelect";
+import VInput from "@/components/Layout/UI/VInput";
+import VSelect from "@/components/Layout/UI/VSelect";
 export default {
+  name: "StepThree",
   components: {
-    itemInput,
-    itemSelect,
+    VInput,
+    VSelect,
   },
   props: {
     step: {
       type: Number,
+      required: true,
     },
     person: {
       type: Object,
@@ -70,6 +72,7 @@ export default {
     },
     validate: {
       type: Object,
+      required: true,
     },
   },
 };

@@ -11,17 +11,35 @@
       :value="value"
       @input="$emit('input', $event.target.value)"
     />
+    <div class="error" v-if="dirty && !required">
+      Это поле должно быть заполнено
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  name: "itemDatapicker",
   props: {
     value: {
       type: String,
+      required: true,
     },
     necessarily: {
       type: Boolean,
+      default: false,
+    },
+    important: {
+      type: Boolean,
+      default: false,
+    },
+    dirty: {
+      type: Boolean,
+      default: false,
+    },
+    required: {
+      type: Boolean,
+      default: false,
     },
   },
 };
@@ -51,7 +69,7 @@ export default {
     border-color: #2c3e50;
   }
 }
-.necessarily {
+.error {
   color: red;
 }
 </style>

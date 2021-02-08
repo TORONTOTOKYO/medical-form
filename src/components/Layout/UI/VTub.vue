@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  name: "itemTub",
   props: {
     step: {
       type: Number,

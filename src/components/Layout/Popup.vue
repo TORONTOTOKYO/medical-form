@@ -10,7 +10,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "Popup",
+};
 </script>
 
 <style lang="scss" scoped>

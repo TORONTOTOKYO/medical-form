@@ -3,12 +3,12 @@
     <form class="form" @submit.prevent="onSubmit" novalidate>
       <div class="form__title">Форма регистрации клиента</div>
       <div class="steps">
-        <item-tub
+        <v-tub
           v-for="(tab, index) in 4"
           :key="index"
           :index="index + 1"
           :step="step"
-        ></item-tub>
+        ></v-tub>
       </div>
       <step-one
         v-show="step === 1"
@@ -61,7 +61,7 @@
 
 <script>
 import { required } from "vuelidate/lib/validators";
-import itemTub from "@/components/Layout/UI/itemTub";
+import VTub from "@/components/Layout/UI/VTub";
 import VButton from "@/components/Layout/UI/VButton";
 
 import StepOne from "@/components/Layout/StepOne";
@@ -71,8 +71,9 @@ import ShowResult from "@/components/Layout/ShowResult";
 import Popup from "@/components/Layout/Popup";
 
 export default {
+  name: "LayoutForm",
   components: {
-    itemTub,
+    VTub,
     VButton,
     StepOne,
     StepSecond,
@@ -203,6 +204,9 @@ export default {
         required,
       },
       patronymic: {
+        required,
+      },
+      dateOfBirth: {
         required,
       },
       phone: {

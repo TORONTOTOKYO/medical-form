@@ -1,30 +1,30 @@
 <template>
   <div class="form__step">
-    <item-input
+    <v-input
       v-model.trim="person.index"
       :value="person.index"
       :label-title="'Индекс'"
       :id="'formIndex'"
       :typeInput="'number'"
       :necessarily="false"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       v-model.trim="person.country"
       :value="person.country"
       :label-title="'Страна'"
       :id="'formCountry'"
       :typeInput="'text'"
       :necessarily="false"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       v-model.trim="person.region"
       :value="person.region"
       :label-title="'Регион'"
       :id="'formRegion'"
       :typeInput="'text'"
       :necessarily="false"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       v-model.trim="person.city"
       :value="person.city"
       :label-title="'Город'"
@@ -33,8 +33,8 @@
       :dirty="validate.city.$dirty"
       :required="validate.city.required"
       :necessarily="true"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       v-model.trim="person.street"
       :value="person.street"
       :label-title="'Улица'"
@@ -43,8 +43,8 @@
       :dirty="validate.street.$dirty"
       :required="validate.street.required"
       :necessarily="true"
-    ></item-input>
-    <item-input
+    ></v-input>
+    <v-input
       v-model.trim="person.house"
       :value="person.house"
       :label-title="'Номер дома'"
@@ -53,19 +53,21 @@
       :dirty="validate.house.$dirty"
       :required="validate.house.required"
       :necessarily="true"
-    ></item-input>
+    ></v-input>
   </div>
 </template>
 
 <script>
-import itemInput from "@/components/Layout/UI/itemInput";
+import VInput from "@/components/Layout/UI/VInput";
 export default {
+  name: "StepSecond",
   components: {
-    itemInput,
+    VInput,
   },
   props: {
     step: {
       type: Number,
+      required: true,
     },
     person: {
       type: Object,
@@ -73,6 +75,7 @@ export default {
     },
     validate: {
       type: Object,
+      required: true,
     },
   },
 };

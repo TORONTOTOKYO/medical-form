@@ -7,10 +7,10 @@
     <select
       :id="id"
       class="select__item"
-      multiple
       :value="value"
       @input="$emit('input', $event.target.value)"
     >
+      <option disabled value="">Выберите один из вариантов</option>
       <option
         class="select__options"
         v-for="(item, index) in list"
@@ -26,18 +26,17 @@
 
 <script>
 export default {
+  name: "itemSelect",
   props: {
     necessarily: {
       type: Boolean,
+      default: false,
     },
     value: {
       type: String,
-    },
-    labelTitle: {
-      type: String,
       required: true,
     },
-    id: {
+    labelTitle: {
       type: String,
       required: true,
     },
@@ -45,14 +44,18 @@ export default {
       type: Array,
       required: true,
     },
-    important: {
-      type: Boolean,
+    id: {
+      type: String,
+      required: true,
     },
+
     dirty: {
       type: Boolean,
+      required: true,
     },
     required: {
       type: Boolean,
+      required: true,
     },
   },
 };
@@ -62,10 +65,24 @@ export default {
 .select {
   position: relative;
   margin-bottom: 20px;
+
   &__label {
     display: block;
     margin-bottom: 10px;
     font-size: 16px;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 40px;
+      right: 10px;
+      z-index: 1;
+      pointer-events: none;
+
+      border-style: solid;
+      border-width: 8px 7px 0 9px;
+      border-color: #121212 transparent transparent transparent;
+    }
   }
 
   &__item {
@@ -73,12 +90,25 @@ export default {
     padding: 10px;
 
     border: 1px solid #ccc;
-
+    border-radius: 3px;
     appearance: none;
     font-family: inherit;
     font-size: 16px;
 
     background: none;
+    &::after {
+      content: "";
+      position: absolute;
+      display: block;
+      top: 0;
+      right: 10px;
+      z-index: 1;
+      pointer-events: none;
+
+      border-style: solid;
+      border-width: 8px 7px 0 9px;
+      border-color: #121212 transparent transparent transparent;
+    }
     &:focus {
       border-color: #000;
     }
@@ -87,10 +117,10 @@ export default {
     margin-bottom: 5px;
   }
   .error {
+    margin: 5px 0px;
     font-size: 12px;
     color: red;
   }
-
   .necessarily {
     color: red;
   }

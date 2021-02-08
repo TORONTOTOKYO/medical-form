@@ -13,9 +13,11 @@
 
 <script>
 export default {
+  name: "itemCheckbox",
   props: {
     value: {
       type: [Boolean, String],
+      required: true,
     },
     id: {
       type: String,
